@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+export DISABLE_SPRING=1
+
+bin/setup
+bin/rake
+bundle exec rubocop
+bundle exec reek
+bundle exec haml-lint

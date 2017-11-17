@@ -65,6 +65,7 @@ RSpec.configure do |config|
 
   VCR.configure do |c|
     c.cassette_library_dir = 'spec/vcr'
+    c.default_cassette_options = { erb: true }
     c.hook_into :webmock
     c.default_cassette_options = { record: :once }
   end

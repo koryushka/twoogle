@@ -52,6 +52,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5.2'
   # HAML for views
   gem 'haml-rails', '~> 1.0.0'
+  # Tool for writing clean and consistent HAML
+  gem 'haml-lint', '~> 0.999.999', require: false
 end
 
 group :test do

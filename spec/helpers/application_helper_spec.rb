@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe(ApplicationHelper) do
   describe('#options_for_select') do
     it 'returns correct options for select by default' do
-      expected_options = "<option value='favorite_count'>Likes</option><option"\
-        " value='retweet_count'>Retweeted</option><option value='created_at'>"\
-        'Created At</option>'
+      expected_options = '<option value="favorite_count">Likes</option>'\
+        '<option value="retweet_count">Retweeted</option>'\
+        '<option value="created_at">Created At</option>'
 
       expect(helper.options_for_select).to eq(expected_options)
     end
 
     it 'returns correct options for select with param' do
-      expected_options = "<option value='favorite_count'>Likes</option><option"\
-        " selected value='retweet_count'>Retweeted</option><option value="\
-        "'created_at'>Created At</option>"
+      expected_options = '<option value="favorite_count">Likes</option>'\
+      '<option value="retweet_count" selected="selected">Retweeted'\
+      '</option><option value="created_at">Created At</option>'
 
       expect(helper.options_for_select(selected: 'Retweeted'))
         .to eq(expected_options)

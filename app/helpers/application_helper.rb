@@ -1,13 +1,12 @@
 module ApplicationHelper
   def options_for_select(selected: nil)
-    select_mapping.each_with_object('') do |(key, value), str|
-      string = if selected?(value, selected)
-                 "<option selected value='#{key}'>#{value}</option>"
-               else
-                 "<option value='#{key}'>#{value}</option>"
-               end
-      str << string
-    end
+    safe_join(
+      select_mapping.each_with_object([]) do |(key, value), out|
+        options = { value: key }
+        options[:selected] = true if selected?(value, selected)
+        out << content_tag(:option, value, options)
+      end
+    )
   end
 
   def selected?(value, selected)

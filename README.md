@@ -1,24 +1,13 @@
-# README
+# Twoogle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Twoogle - simple app to search tweets.
 
-Things you may want to cover:
+To setup application run in terminal `bin/setup`. Fill in appropriate `.env` file with needed environment variables.
 
-* Ruby version
+Before each PR please run `bin/check` in order to make sure that you're properly done.
 
-* System dependencies
+* Ruby version - 2.4.1
 
-* Configuration
+* No DB required
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run `rspec` to test application.

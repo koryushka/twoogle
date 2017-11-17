@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/search/tweets.json?q=ruby%20on%20rails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer invalid-access-token
+  response:
+    status:
+      code: 401
+      message: Authorization Required
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Nov 2017 10:32:26 GMT
+      Server:
+      - tsa_o
+      Set-Cookie:
+      - guest_id=v1%3A151091474620393035; Expires=Sun, 17 Nov 2019 10:32:26 UTC; Path=/;
+        Domain=.twitter.com
+      - personalization_id="v1_uJxrEk+T5q4B7+qlzdls9g=="; Expires=Sun, 17 Nov 2019
+        10:32:26 UTC; Path=/; Domain=.twitter.com
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Connection-Hash:
+      - d53a3cc02ecb47c335446af2e6204f4a
+      X-Response-Time:
+      - '104'
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"code":89,"message":"Invalid or expired token."}]}'
+    http_version:
+  recorded_at: Fri, 17 Nov 2017 10:32:26 GMT
+recorded_with: VCR 3.0.3

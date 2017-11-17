@@ -1,0 +1,6 @@
+---
+IrresponsibleModule:
+  enabled: false
+"app/helpers":
+  UtilityFunction:
+    enabled: false

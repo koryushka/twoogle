@@ -25,3 +25,4 @@
 # Ignore dotenv configuration files
 .env.development
 .env.test
+.env

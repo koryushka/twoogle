@@ -19,9 +19,9 @@ module ApplicationHelper
 
   def select_mapping
     {
+      created_at: 'Created At',
       favorite_count: 'Likes',
-      retweet_count: 'Retweeted',
-      created_at: 'Created At'
+      retweet_count: 'Retweeted'
     }
   end
 end

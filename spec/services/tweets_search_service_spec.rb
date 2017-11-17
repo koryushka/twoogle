@@ -34,17 +34,11 @@ RSpec.describe(TweetsSearchService) do
         VCR.use_cassette('twitter/jwt') do
           VCR.use_cassette('twitter/searcher') do
             retweets_array = subject.call[:tweets].pluck(:retweet_count)
-            sorted_retweets= retweets_array.sort.reverse
+            sorted_retweets = retweets_array.sort.reverse
 
             expect(retweets_array).to eq(sorted_retweets)
           end
         end
-      end
-    end
-
-    context('when it fails') do
-      it 'returns error' do
-
       end
     end
   end

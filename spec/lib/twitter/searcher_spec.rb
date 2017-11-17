@@ -17,22 +17,21 @@ RSpec.describe(Twitter::Searcher) do
         subject = described_class.new(search_term: 'ruby on rails')
         VCR.use_cassette('twitter/jwt') do
           VCR.use_cassette('twitter/searcher-invalid-token') do
-
             expect(subject.search).to eql(false)
           end
         end
       end
     end
 
-    context('when authentication fails')do
+    context('when authentication fails') do
       it 'logs an error' do
         VCR.use_cassette('twitter/jwt') do
           VCR.use_cassette('twitter/searcher-invalid-token') do
-              expect(Rails.logger).to receive(:error).with(
-                '[Twitter]: search error - Invalid or expired token.'
-              )
-              subject = described_class.new(search_term: 'ruby on rails')
-              subject.search
+            expect(Rails.logger).to receive(:error).with(
+              '[Twitter]: search error - Invalid or expired token.'
+            )
+            subject = described_class.new(search_term: 'ruby on rails')
+            subject.search
           end
         end
       end

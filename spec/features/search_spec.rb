@@ -21,6 +21,32 @@ RSpec.feature('Tweets search') do
     end
   end
 
+  scenario('returns message when no tweets found') do
+    allow_any_instance_of(TweetsSearchService)
+      .to receive(:call).and_return(
+        error: nil,
+        tweets: []
+      )
+    visit root_path
+    VCR.use_cassette('twitter/jwt') do
+      fill_in 'search_term', with: 'some-string'
+      click_on 'search'
+
+      expect(page).to have_content('No results found')
+    end
+  end
+
+  scenario('does not returns message when no params[:search_term]') do
+    allow_any_instance_of(TweetsSearchService)
+      .to receive(:call).and_return(
+        error: nil,
+        tweets: []
+      )
+    visit root_path
+
+    expect(page).to_not have_content('No results found')
+  end
+
   context('shows search conditions') do
     scenario('without order_by selected') do
       visit root_path

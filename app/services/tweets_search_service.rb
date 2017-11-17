@@ -20,7 +20,15 @@ class TweetsSearchService
   attr_writer :search_term, :order_by
 
   def reordered_tweets
-    sliced_tweets.sort { |first, second| second[order_by] <=> first[order_by] }
+    sliced_tweets.sort do |first, second|
+      first = first[order_by]
+      second = second[order_by]
+      if order_by == :created_at
+        second.to_datetime <=> first.to_datetime
+      else
+        second <=> first
+      end
+    end
   end
 
   def parsed_tweets

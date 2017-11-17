@@ -1,2 +1,5 @@
-- tweets.each do |tweet|
-  = render(partial: 'tweet', locals: { tweet: tweet })
+- if tweets.empty? && params[:search_term].present?
+  No results found
+- else
+  - tweets.each do |tweet|
+    = render(partial: 'tweet', locals: { tweet: tweet })

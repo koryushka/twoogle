@@ -1,0 +1,17 @@
+:ruby
+  ordered_by = if params[:order_by].blank?
+                 select_mapping[:created_at]
+               else
+                 select_mapping[params[:order_by].to_sym]
+               end
+
+= form_tag(root_path, method: :get) do |f|
+  = text_field_tag :search_term, params[:search_term],
+    placeholder: 'Find tweets'
+  = select_tag :order_by, raw(options_for_select(selected: ordered_by)),
+    prompt: 'Order by:'
+  = submit_tag(:search)
+= render(partial: 'search_term', locals: { search_term: params[:search_term],
+  ordered_by: ordered_by })
+= render(partial: 'error', locals: { error: @tweets.fetch(:error, nil) })
+= render(partial: 'tweets', locals: { tweets: @tweets.fetch(:tweets, []) })

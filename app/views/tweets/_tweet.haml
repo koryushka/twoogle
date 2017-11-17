@@ -1,0 +1,7 @@
+%p
+  %span
+    %h5 #{human_time(tweet[:created_at])} - #{tweet[:user]['name']}
+  .content
+    = tweet[:text]
+  %h6 Likes: #{tweet[:favorite_count]}, Retweeted: #{tweet[:retweet_count]}
+%hr
